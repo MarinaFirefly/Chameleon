@@ -2,9 +2,7 @@ let sumHamelion = 0
 
 let arrayGlasnie = ["А", "О", "Е", "У", "И", "Я", "Э", "Ю", "Ы", "Ё"]
 let arraySoglasnie = ["Б", "В", "Г", "Д", "Ж", "З", "К", "Л", "М", "Н", "П", "Р", "С", "Т", "Ф", "Х", "Ц", "Ш", "Щ", "Ь", "Ъ", "Ч"]
-let arraySlogi = ["КОТ","ВОТ","ЖАР","МИГ","МАК","РАК","РЫК","КИТ","ЁЖ",]
-                //"ВА-","ВО-","ВЕ","ВУ","ВИ","ВЫ","ВЮ","ВЯ","ВЭ",
-              //  "ГА-","ГО-","ГЕ","ГУ","ГИ","ГЫ","ГЮ","ГЯ","ГЭ",]
+let arraySlogi = ["акт", "бак", "бас", "бег", "боб", "бок", "бор", "бук", "бык", "век", "вес", "вид", "вол", "вор", "все"]
 let arrayLetters = []
 let arrayColors = ["red", "green", "blue", "brown", "white", "yellow", "pink", "violet", "orange", "gray"]
 
@@ -22,10 +20,10 @@ playbtn.onclick = () => {
     header.remove()
     let newSheet = () => {
         console.log(sumHamelion)
-        if(sumHamelion < 3){
+        if (sumHamelion < 3) {
             arrayLetters = arrayGlasnie
         }
-        else if (sumHamelion > 2 && sumHamelion < 6){
+        else if (sumHamelion > 2 && sumHamelion < 6) {
             arrayLetters = arraySoglasnie
         }
         else {
@@ -55,7 +53,13 @@ playbtn.onclick = () => {
         let arrayForQuestion = [first, second, third, fourth]
         let letterForQuestion = arrayForQuestion[rand(0, arrayForQuestion.length - 1)]
 
-        let msg = new SpeechSynthesisUtterance(`Найди букву ${letterForQuestion.letter.innerText}`)
+        let msg = ""
+        if (letterForQuestion.letter.innerText.length === 1) {
+            msg = new SpeechSynthesisUtterance(`Найди букву ${letterForQuestion.letter.innerText}`)
+        }
+        else {
+            msg = new SpeechSynthesisUtterance(`Найди слово ${letterForQuestion.letter.innerText}`)
+        }
         msg.lang = "ru"
         speechSynthesis.speak(msg)
 
