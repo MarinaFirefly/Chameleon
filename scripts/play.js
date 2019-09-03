@@ -1,6 +1,6 @@
 let sumHamelion = 0
 
-let arrayGlasnie = ["А", "О", "Е", "У", "И", "Я", "Э", "Ю", "Ы", "Ё"]
+let arrayGlasnie = ["А а", "О о", "Е е", "У у", "И и", "Я я", "Э э", "Ю ю", "Ы ы", "Ё ё"]
 let arraySoglasnie = ["Б", "В", "Г", "Д", "Ж", "З", "К", "Л", "М", "Н", "П", "Р", "С", "Т", "Ф", "Х", "Ц", "Ш", "Щ", "Ь", "Ъ", "Ч"]
 let arraySlogi = ["акт", "бак", "бас", "бег", "боб", "бок", "бор", "бук", "бык", "век", "вес", "вид", "вол", "вор", "все"]
 let arrayLetters = []
@@ -39,16 +39,16 @@ playbtn.onclick = () => {
                 letterRand.style.color = arrayColors[rand(0, arrayColors.length - 1)]
                 letterRand.style.position = "absolute"
                 letterRand.style.top = `${Number(top)}%`
-                letterRand.style.fontSize = "250px"
+                letterRand.style.fontSize = "220px"
                 letterRand.style.left = `${Number(left)}%`
                 letterdiv.appendChild(letterRand)
                 return this.letter = letterRand
             }
         }
-        let first = new Letter("10", "15")
-        let second = new Letter("10", "65")
-        let third = new Letter("50", "15")
-        let fourth = new Letter("50", "65")
+        let first = new Letter("10", "5")
+        let second = new Letter("10", "50")
+        let third = new Letter("50", "5")
+        let fourth = new Letter("50", "50")
 
         let arrayForQuestion = [first, second, third, fourth]
         let letterForQuestion = arrayForQuestion[rand(0, arrayForQuestion.length - 1)]
