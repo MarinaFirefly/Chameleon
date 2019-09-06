@@ -68,10 +68,10 @@ playbtn.onclick = () => {
     setTimeout(() => {
         let newSheet = () => {
             console.log(sumHamelion)
-            if (sumHamelion < 3) {
+            if (sumHamelion < 8) {
                 arrayLetters = arrayGlasnie
             }
-            else if (sumHamelion > 2 && sumHamelion < 16) {
+            else if (sumHamelion > 7 && sumHamelion < 16) {
                 arrayLetters = arraySoglasnie
             }
             /*       else {
@@ -150,9 +150,13 @@ playbtn.onclick = () => {
         newSheet()
         setTimeout(() => {
             let result = async () => {
+                let bugTxt = ``
+                for (let i =0; i < sumHamelion; i++){
+                    bugTxt+=`<i class="fas fa-bug"></i>`
+                }
                 document.body.innerHTML = `<div id="modal">\n<div id="modalHeader">\n<button id="btnTimes">
             \n<i class="fas fa-times fa-2x" style="color: white"></i>\n</button>\n</div>\n
-            <div id="modalTxt">Результат ${sumHamelion}</div>\n</div>\n<div id="modalBack">\n
+            <div id="modalTxt">Результат ${sumHamelion} \n ${bugTxt}</div>\n</div>\n<div id="modalBack">\n
             <img id="chamBack" src="images/chameleon3.png">\n</div>\n
             <footer class="footer">\n<p class="text-in-block">Chameleon by Laktionova</p>\n</footer>`
             }
