@@ -49,8 +49,8 @@ class Bug {
     flex() {
         var bug = this.bug
         function flexingBug() {
-            bug.style.top = `${rand(0, window.innerHeight)}px`
-            bug.style.left = `${rand(0, window.innerWidth)}px`
+            bug.style.top = `${rand(0, (window.innerHeight-100))}px`
+            bug.style.left = `${rand(0, (window.innerWidth-100))}px`
             setTimeout(flexingBug, rand(500, 3000))
         }
 
