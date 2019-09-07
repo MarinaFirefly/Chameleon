@@ -40,7 +40,7 @@ class Bug {
         img.style.position = 'absolute'
         img.style.top = `${rand(0, window.innerHeight)}px`
         img.style.left = `${rand(0, window.innerWidth)}px`
-        img.style.transition = '2s all'
+        //img.style.transition = '2s all'
         return img
     }
     appendTo(divname) {
@@ -48,12 +48,18 @@ class Bug {
     }
     flex() {
         var bug = this.bug
-        function flexingBug() {
-            bug.style.top = `${rand(0, (window.innerHeight-100))}px`
-            bug.style.left = `${rand(0, (window.innerWidth-100))}px`
-            setTimeout(flexingBug, rand(500, 3000))
+        /*
+        function bugRotate() {
+            bug.style.transform = `rotate(${rand(0, 360)}deg)`
+            setTimeout(bugRotate, 3000)
         }
-
+        bugRotate()*/
+        function flexingBug() {
+            bug.style.top = `${rand(0, (window.innerHeight - 100))}px`
+            bug.style.left = `${rand(0, (window.innerWidth - 100))}px`
+            bug.style.transition = '3s'
+            setTimeout(flexingBug, 3000)
+        }
         flexingBug()
     }
 }
@@ -135,7 +141,7 @@ playbtn.onclick = () => {
                     element.letter.onclick = () => {
                         letterdiv.innerText = ""
                         let smile = create("img")
-                        smile.src = "images/facepalm.jpg"
+                        smile.src = "images/sad.png"
                         smile.id = "chameleon"
                         document.body.appendChild(smile)
                         setTimeout(() => {
@@ -151,8 +157,8 @@ playbtn.onclick = () => {
         setTimeout(() => {
             let result = async () => {
                 let bugTxt = ``
-                for (let i =0; i < sumHamelion; i++){
-                    bugTxt+=`<i class="fas fa-bug"></i>`
+                for (let i = 0; i < sumHamelion; i++) {
+                    bugTxt += `<i class="fas fa-bug"></i>`
                 }
                 document.body.innerHTML = `<div id="modal">\n<div id="modalHeader">\n<button id="btnTimes">
             \n<i class="fas fa-times fa-2x" style="color: white"></i>\n</button>\n</div>\n
@@ -162,7 +168,7 @@ playbtn.onclick = () => {
             }
             result().then(element => {
                 for (let i = 0; i < sumHamelion; i++) {
-                    let bug = new Bug("images/bug2.gif", "100")
+                    let bug = new Bug(`images/bug${rand(1, 4)}.png`, `${rand(70, 110)}`)
                     bug.appendTo(modalBack)
                     bug.flex()
                     console.log(bug)
