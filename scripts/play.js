@@ -6,7 +6,6 @@ data.sounds.forEach(sound => {
         arrayGlasnie.push(sound)
     }
 })
-console.log(arrayGlasnie)
 
 let arraySoglasnie = []
 data.sounds.forEach(sound => {
@@ -14,7 +13,6 @@ data.sounds.forEach(sound => {
         arraySoglasnie.push(sound)
     }
 })
-console.log(arraySoglasnie)
 
 let arraySlova = ["акт", "бак", "бас", "бег", "боб", "бок", "бор", "бук", "бык", "век", "вес", "вид", "вол", "вор", "все"]
 let arrayLetters = []
@@ -35,39 +33,43 @@ class Bug {
 
     create(image, size) {
         var img = document.createElement("img")
+        img.className = "bugs"
         img.src = image
         img.width = size
         img.style.position = 'absolute'
-        img.style.top = `${rand(0, window.innerHeight)}px`
-        img.style.left = `${rand(0, window.innerWidth)}px`
-        //img.style.transition = '2s all'
+        img.style.top = `${rand(0, window.innerHeight - 55)}px`
+        img.style.left = `${rand(0, window.innerWidth - 55)}px`
         return img
     }
     appendTo(divname) {
         divname.appendChild(this.bug)
     }
+
     flex() {
-        var bug = this.bug
-        /*
-        function bugRotate() {
-            bug.style.transform = `rotate(${rand(0, 360)}deg)`
-            setTimeout(bugRotate, 3000)
-        }
-        bugRotate()*/
+        let bug = this.bug
         function flexingBug() {
-            bug.style.top = `${rand(0, (window.innerHeight - 100))}px`
-            bug.style.left = `${rand(0, (window.innerWidth - 100))}px`
-            bug.style.transition = '3s'
-            setTimeout(flexingBug, 3000)
+            bug.style.top = `${rand(0, (window.innerHeight - 55))}px`
+            bug.style.left = `${rand(0, (window.innerWidth - 55))}px`
+            bug.style.transition = '5s'
+            setTimeout(flexingBug, rand(1000, 5000))
         }
         flexingBug()
+    }
+    rotation() {
+        let bug = this.bug
+        function bugRotate() {
+            bug.style.transform = `rotate(${rand(90, 270)}deg)`
+            bug.style.transition = '0.1s'
+            setTimeout(bugRotate, 5000)
+        }
+        bugRotate()
     }
 }
 
 playbtn.onclick = () => {
     playbtn.remove()
     header.remove()
-    msg = new SpeechSynthesisUtterance(`Найди букву или слово!`)
+    msg = new SpeechSynthesisUtterance(`Найди букву!`)
     msg.lang = "ru"
     msg.pitch = 0.3
     speechSynthesis.speak(msg)
@@ -80,9 +82,6 @@ playbtn.onclick = () => {
             else if (sumHamelion > 7 && sumHamelion < 16) {
                 arrayLetters = arraySoglasnie
             }
-            /*       else {
-                       arrayLetters = arraySlova
-                   }*/
 
             class Letter {
                 constructor(top, left) {
@@ -127,7 +126,7 @@ playbtn.onclick = () => {
                         ++sumHamelion
                         letterdiv.innerText = ""
                         let ham = create("img")
-                        ham.src = "images/hamelion1.gif"
+                        ham.src = "images/chameleon1.gif"
                         ham.id = "chameleon"
                         document.body.appendChild(ham)
                         setTimeout(() => {
@@ -170,11 +169,22 @@ playbtn.onclick = () => {
                 for (let i = 0; i < sumHamelion; i++) {
                     let bug = new Bug(`images/bug${rand(1, 4)}.png`, `${rand(70, 110)}`)
                     bug.appendTo(modalBack)
+                    bug.rotation()
                     bug.flex()
-                    console.log(bug)
+                    //                    console.log(bug)
                 }
                 btnTimes.onclick = () => window.location.href = "index.html"
+            }).then(element => {
+                setTimeout(function delBug() {
+                    let bugDel = document.getElementsByClassName("bugs")[0]
+                    bugDel.parentNode.removeChild(bugDel)
+                    let i = 0
+                    if (i < document.getElementsByClassName("bugs").length) {
+                        setTimeout(() => delBug(), 5000)
+                        i++
+                    }
+                }, 5000)
             })
         }, 60000)
-    }, 2000);
+    }, 2000)
 }

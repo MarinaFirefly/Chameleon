@@ -1,6 +1,7 @@
 body{
     background-color: #E6F1BF;
     background-image: url(https://picsum.photos/id/977/1400/1700);
+    background-size: 140%; 
 }
 #header {
     color: white;
@@ -19,7 +20,7 @@ body{
     left:50%;
     top: 50%;                
     transform: translate(-50%, -50%);
-    color:#EAEBE4;
+    color:#485E02;
 }
 
 .text-in-block{
