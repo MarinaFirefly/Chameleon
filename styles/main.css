@@ -50,7 +50,14 @@ body{
     width: 670px;
     max-width: 100%;
  }
-
+ #sad{
+    position: absolute;
+    left: 50%;
+    top: 50%;                
+    transform: translate(-50%, -50%);
+    width: 500px;
+    max-width: 100%;
+ }
  #modal{
     width: 400px;
     height: 160px;

@@ -14,7 +14,6 @@ data.sounds.forEach(sound => {
     }
 })
 
-let arraySlova = ["акт", "бак", "бас", "бег", "боб", "бок", "бор", "бук", "бык", "век", "вес", "вид", "вол", "вор", "все"]
 let arrayLetters = []
 let arrayColors = ["red", "green", "blue", "brown", "white", "yellow", "pink", "violet", "orange", "gray"]
 
@@ -76,10 +75,10 @@ playbtn.onclick = () => {
     setTimeout(() => {
         let newSheet = () => {
             console.log(sumHamelion)
-            if (sumHamelion < 8) {
+            if (sumHamelion < 6) {
                 arrayLetters = arrayGlasnie
             }
-            else if (sumHamelion > 7 && sumHamelion < 16) {
+            else {
                 arrayLetters = arraySoglasnie
             }
 
@@ -140,8 +139,8 @@ playbtn.onclick = () => {
                     element.letter.onclick = () => {
                         letterdiv.innerText = ""
                         let smile = create("img")
-                        smile.src = "images/sad.png"
-                        smile.id = "chameleon"
+                        smile.src = "images/sad1.png"
+                        smile.id = "sad"
                         document.body.appendChild(smile)
                         setTimeout(() => {
                             smile.remove()
@@ -167,11 +166,10 @@ playbtn.onclick = () => {
             }
             result().then(element => {
                 for (let i = 0; i < sumHamelion; i++) {
-                    let bug = new Bug(`images/bug${rand(1, 4)}.png`, `${rand(70, 110)}`)
+                    let bug = new Bug(`images/bug${rand(1, 6)}.png`, `${rand(70, 110)}`)
                     bug.appendTo(modalBack)
                     bug.rotation()
                     bug.flex()
-                    //                    console.log(bug)
                 }
                 btnTimes.onclick = () => window.location.href = "index.html"
             }).then(element => {
