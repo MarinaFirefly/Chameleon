@@ -1,11 +1,12 @@
 body{
     background-color: #E6F1BF;
     background-image: url(https://picsum.photos/id/977/1400/1700);
+    background-size: 140%; 
 }
 #header {
     color: white;
     background-color: #485E02;
-    height: 150px;
+    height: 15%;
     text-align: center;
     font: 40px bold;
     width: 100%;
@@ -19,7 +20,7 @@ body{
     left:50%;
     top: 50%;                
     transform: translate(-50%, -50%);
-    color:#EAEBE4;
+    color:#485E02;
 }
 
 .text-in-block{
@@ -46,5 +47,68 @@ body{
     left: 50%;
     top: 50%;                
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 670px;
+    max-width: 100%;
  }
+ #sad{
+    position: absolute;
+    left: 50%;
+    top: 50%;                
+    transform: translate(-50%, -50%);
+    width: 500px;
+    max-width: 100%;
+ }
+ #modal{
+    width: 400px;
+    height: 160px;
+    position: absolute;
+    left:50%;
+    top: 50%;                
+    transform: translate(-50%, -50%);
+    background-color:#f0f0f0;
+    border: solid 2px #999999;
+    color:black;
+    z-index: 101;
+}
+#modalTxt{
+    text-align: center; 
+    font-size: 18px;
+    position: fixed;
+    width: 390px;
+    height: 120px;
+    overflow: auto; 
+    padding: 10% 0 0 0;        
+}
+
+#modalHeader{
+    background-color: #485E02; 
+    width:100%; 
+    height: 37px; 
+    text-align: right;
+}
+
+#btnTimes{
+    border: solid 1px white; 
+    border-radius:5%; 
+    width: 37px; 
+    height: 37px; 
+    background-color: gray;
+}
+#modalBack{
+    z-index: 100; 
+    opacity: 0.7; 
+    position:absolute; 
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    background-color: gray;
+}
+
+#chamBack{
+    width: 50%;
+    position: absolute;
+    left:50%;
+    top: 40%;                
+    transform: translate(-50%, -50%);
+}
